@@ -38,10 +38,23 @@ library(ggspc)
 library(ggplot2)
 
 data(loafercreek, package = "soilDB")
+GHL(loafercreek) <- "genhz"
 
+# demonstration of possibilities w/ fortify(<SPC>) defined
+
+# site v.s. site level
+ggplot(loafercreek, aes(earthcovkind1, slope_field)) +
+  geom_boxplot(na.rm = TRUE)
+
+# site v.s. horizon level
+ggplot(loafercreek, aes(hillslopeprof, sand)) +
+  geom_boxplot(na.rm = TRUE)
+
+# horizon v.s. horizon level
 ggplot(loafercreek, aes(clay, genhz)) +
   geom_boxplot(na.rm = TRUE)
 
-# ggplot(loafercreek, aes(x = clay)) +
-#   stat_pscs_wtd(na.rm = TRUE)
+# custom depth interval weighted average aggregation
+ggplot(loafercreek, aes(clay, hillslopeprof)) +
+  stat_depth_weighted(na.rm = TRUE, geom = "point")
 ```
