@@ -12,7 +12,7 @@ stat_depth_weighted(
   na.rm = FALSE,
   show.legend = NA,
   inherit.aes = TRUE,
-  FUN = weighted.mean,
+  FUN = stats::weighted.mean,
   from = 0,
   to = 200,
   ...

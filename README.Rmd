@@ -67,7 +67,7 @@ ggplot(loafercreek, aes(clay, genhz)) +
 
 ### Depth Weighted Aggregation (`stat_depth_weighted()`)
 
-The `stat_depth_weighted()` function is a specialized {ggplot2} statistic intended for calculation of depth-weighted averages in a `SoilProfileCollection`. The default uses a constant interval `from=0` `to=200` (centimeters), but the intervals of interest may alternately be specified as site-level column names (unquoted), and therefore may vary between profiles.
+The `stat_depth_weighted()` function is a specialized {ggplot2} statistic intended for calculation of depth-weighted values for horizon data in a `SoilProfileCollection`. The default uses a constant interval `from=0` `to=200` (centimeters), but the intervals of interest may alternately be specified as site-level column names (unquoted), and therefore may vary between profiles.
 
 Currently, `stat_depth_weighted()` only supports the "point" geometry type, but in future "boxplot" and others may be supported.
 

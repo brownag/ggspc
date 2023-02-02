@@ -38,7 +38,9 @@ if (!isGeneric("ggplot"))
 #' @param environment Default: `parent.frame()`
 #' @return `gg` object from `ggplot2` package
 #' @export
+#' @importFrom methods isGeneric setGeneric
 #' @importFrom aqp idname
+#' @importFrom ggplot2 ggplot aes
 #' @importFrom utils modifyList
 ggplot.SoilProfileCollection <- function(data, mapping = ggplot2::aes(),
                                          ..., environment = parent.frame()) {

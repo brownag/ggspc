@@ -69,6 +69,7 @@ StatDepthWeighted <- ggplot2::ggproto("StatDepthWeighted", ggplot2::Stat,
 #'
 #' @return A `ggplot2::layer()` (a combination of data, Stat and `geom` with a potential position adjustment)
 #' @importFrom ggplot2 layer ggproto
+#' @importFrom stats weighted.mean
 #' @export
 stat_depth_weighted <- function(mapping = NULL,
                                 data = NULL,
@@ -77,7 +78,7 @@ stat_depth_weighted <- function(mapping = NULL,
                                 na.rm = FALSE,
                                 show.legend = NA,
                                 inherit.aes = TRUE,
-                                FUN = weighted.mean,
+                                FUN = stats::weighted.mean,
                                 from = 0, to = 200,
                                 ...) {
 

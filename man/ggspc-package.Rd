@@ -7,7 +7,7 @@
 \alias{ggspc.env}
 \title{ggspc: Custom 'ggplot2' 'Stat', 'Geom', and 'theme' definitions for 'aqp' 'SoilProfileCollection' objects}
 \description{
-Provides custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' object compatibility with 'ggplot2'
+The goal of 'ggspc' is to provide custom 'Stat', 'Geom', and 'theme' definitions to enhance compatibility of 'SoilProfileCollection' objects with 'ggplot2'.
 }
 \author{
 \strong{Maintainer}: Andrew Brown \email{andrew.g.brown@usda.gov}

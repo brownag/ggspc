@@ -4,16 +4,20 @@ Title: Custom 'ggplot2' 'Stat', 'Geom', and 'theme' definitions for 'aqp' 'SoilP
 Version: 0.0.0.9000
 Authors@R: person(given="Andrew", family="Brown", email="andrew.g.brown@usda.gov", role = c("aut", "cre"))
 Maintainer: Andrew Brown <andrew.g.brown@usda.gov>
-Description: Provides custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' object compatibility with 'ggplot2'
+Description: The goal of 'ggspc' is to provide custom 'Stat', 'Geom', and 'theme' definitions to enhance compatibility of 'SoilProfileCollection' objects with 'ggplot2'.
 License: GPL (>= 3)
 Language: en-US
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 LazyData: true
-Imports: 
+Imports:  
     aqp (>= 2.0),
-    ggplot2 (>= 2.0.0)
+    data.table (>= 1.13.0),
+    ggplot2 (>= 2.0.0),
+    methods,
+    tibble (>= 2.1.3)
 Suggests: 
-    testthat (>= 3.0.0)
+    soilDB (>= 2.7.3),
+    testthat (>= 3.1.2)
 Config/testthat/edition: 3
