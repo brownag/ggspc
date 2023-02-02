@@ -1,0 +1,16 @@
+Package: ggspc
+Type: Package
+Title: Custom 'ggplot2' 'Stat', 'Geom', and 'theme' definitions for 'aqp' 'SoilProfileCollection' objects
+Version: 0.0.0.9000
+Authors@R: person(given="Andrew", family="Brown", email="andrew.g.brown@usda.gov", role = c("aut", "cre"))
+Maintainer: Andrew Brown <andrew.g.brown@usda.gov>
+Description: Provides custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' object compatibility with 'ggplot2'
+License: GPL (>= 3)
+Language: en-US
+Encoding: UTF-8
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
+LazyData: true
+Imports: 
+    aqp (>= 2.0),
+    ggplot2 (>= 2.0.0)
