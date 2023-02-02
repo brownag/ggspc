@@ -2,11 +2,12 @@
 % Please edit documentation in R/ggspc-package.R
 \docType{package}
 \name{ggspc-package}
-\alias{ggspc}
 \alias{ggspc-package}
+\alias{_PACKAGE}
+\alias{ggspc.env}
 \title{ggspc: Custom 'ggplot2' 'Stat', 'Geom', and 'theme' definitions for 'aqp' 'SoilProfileCollection' objects}
 \description{
-Provides custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' objects compatibility with 'ggplot2' via 'ggproto'
+Provides custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' object compatibility with 'ggplot2'
 }
 \author{
 \strong{Maintainer}: Andrew Brown \email{andrew.g.brown@usda.gov}

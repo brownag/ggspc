@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggspc.R
 \name{fortify.SoilProfileCollection}
 \alias{fortify.SoilProfileCollection}
-\title{Fortify Method for SoilProfileCollections}
+\title{Fortify Method for SoilProfileCollection}
 \usage{
 \method{fortify}{SoilProfileCollection}(model, data, ...)
 }
