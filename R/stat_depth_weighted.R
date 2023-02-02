@@ -69,7 +69,6 @@ StatDepthWeighted <- ggplot2::ggproto("StatDepthWeighted", ggplot2::Stat,
 #'
 #' @return A `ggplot2::layer()` (a combination of data, Stat and `geom` with a potential position adjustment)
 #' @importFrom ggplot2 layer ggproto
-#' @importMethodsFrom aqp SoilProfileCollection
 #' @export
 stat_depth_weighted <- function(mapping = NULL,
                                 data = NULL,
