@@ -11,13 +11,13 @@ if (!isGeneric("fortify"))
 #' @export
 #' @return A data.frame
 #' @importFrom ggplot2 fortify
-#' @importFrom tibble as_tibble
-#' @importFrom data.table data.table
-#' @importFrom aqp site horizons idname
 fortify.SoilProfileCollection <- function(model, data, ...) {
   .spc_fortify(model, data, ...)
 }
 
+#' @importFrom tibble as_tibble
+#' @importFrom data.table data.table
+#' @importFrom aqp site horizons idname
 .spc_fortify <- function(model, ...) {
   h <- aqp::horizons(model)
   res <- tibble::as_tibble(merge(data.table::data.table(h), aqp::site(model), by = aqp::idname(model)))
@@ -51,46 +51,6 @@ ggplot.SoilProfileCollection <- function(data, mapping = ggplot2::aes(),
     # default y aesthetic is the "idname" from SPC
     y <- as.symbol(aqp::idname(data))
     mapping <- utils::modifyList(mapping, ggplot2::aes(y = {{y}}))
-  }
-
-  # TODO: use actual metadata names? how to use internally then?
-  if (any(!c(".idname", ".hzidname") %in% names(mapping))) {
-    .idname <- as.symbol(aqp::idname(data))
-    .hzidname <- as.symbol(aqp::hzidname(data))
-    mapping <- utils::modifyList(mapping, ggplot2::aes(.id = {{.idname}},
-                                                       .hzid = {{.hzidname}}))
-  }
-
-  if (any(!c(".hzdesgnname", ".hztexclname", ".ghl") %in% names(mapping))) {
-    .hzd <- as.symbol(aqp::hzdesgnname(data))
-    .tex <- as.symbol(aqp::hztexclname(data))
-    .ghl <- as.symbol(aqp::GHL(data))
-    mapping <- utils::modifyList(mapping, ggplot2::aes(.hzd = {{.hzd}},
-                                                       .tex = {{.tex}},
-                                                       .ghl = {{.ghl}}))
-  }
-
-  if (any(!c(".coord.x", ".coord.y") %in% names(mapping))) {
-    crds <- aqp::metadata(data)$coordinates
-    if (length(crds) == 2) {
-      .cx <- as.symbol(crds[1])
-      .cy <- as.symbol(crds[2])
-      mapping <- utils::modifyList(mapping, ggplot2::aes(.coord.x = {{.cx}},
-                                                         .coord.y = {{.cy}}))
-    }
-  }
-
-  if (any(!c(".top", ".bottom", ".thk") %in% names(mapping))) {
-    hzd <- aqp::horizonDepths(data)
-    data$.top <- data[[hzd[1]]]
-    data$.bottom <- data[[hzd[2]]]
-    data$.thk <- data[[hzd[2]]] - data[[hzd[1]]]
-    .top <- as.symbol(".top")
-    .bottom <- as.symbol(".bottom")
-    .thickness <- as.symbol(".thk")
-    mapping <- utils::modifyList(mapping, ggplot2::aes(.thk = {{.thickness}},
-                                                       .top = {{.top}},
-                                                       .bottom = {{.bottom}}))
   }
 
   # pass through "fortified" data.frame to default method

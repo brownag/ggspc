@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  fig.retina = 3 
 )
 ```
 
@@ -31,30 +32,78 @@ remotes::install_github("brownag/ggspc")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This a example shows how to solve the common problem of plotting variables contained in a `SoilProfileCollection` with `ggplot2::ggplot()`
 
 ```{r example}
+library(aqp)
 library(ggspc)
 library(ggplot2)
 
 data(loafercreek, package = "soilDB")
 GHL(loafercreek) <- "genhz"
+```
 
-# demonstration of possibilities w/ fortify(<SPC>) defined
+### Basics
 
+This is a demonstration of what is possible with a simple `fortify(<SPC>)` method defined. The "fortify" method makes it such that names from horizon and site slots of the SPC can be used in `ggplot()` aesthetics via `aes()`. 
+
+```{r basic-spc-ggplot}
 # site v.s. site level
 ggplot(loafercreek, aes(earthcovkind1, slope_field)) +
   geom_boxplot(na.rm = TRUE)
+```
 
+```{r basic-spc-ggplot2}
 # site v.s. horizon level
-ggplot(loafercreek, aes(hillslopeprof, sand)) +
+ggplot(loafercreek, aes(hillslopeprof, clay)) +
   geom_boxplot(na.rm = TRUE)
+```
 
+```{r basic-spc-ggplot3}
 # horizon v.s. horizon level
 ggplot(loafercreek, aes(clay, genhz)) +
   geom_boxplot(na.rm = TRUE)
+```
 
-# custom depth interval weighted average aggregation
+### Depth Weighted Aggregation (`stat_depth_weighted()`)
+
+The `stat_depth_weighted()` function is a specialized {ggplot2} statistic intended for calculation of depth-weighted averages in a `SoilProfileCollection`. The default uses a constant interval `from=0` `to=200` (centimeters), but the intervals of interest may alternately be specified as site-level column names (unquoted), and therefore may vary between profiles.
+
+Currently, `stat_depth_weighted()` only supports the "point" geometry type, but in future "boxplot" and others may be supported.
+
+```{r stat-depth-weighted-spc}
+# default y aesthetic is the profile_id(<SPC>)
+ggplot(loafercreek[1:10], aes(clay)) +
+  stat_depth_weighted(na.rm = TRUE)
+```
+
+```{r stat-depth-weighted-spc2}
+# can use alternate y aesthetic, e.g. hillslopeprof
 ggplot(loafercreek, aes(clay, hillslopeprof)) +
-  stat_depth_weighted(na.rm = TRUE, geom = "point")
+  stat_depth_weighted(na.rm = TRUE)
+```
+
+```{r stat-depth-weighted-spc3}
+# continuous y axes works too (horizon v.s. horizon)
+ggplot(loafercreek, aes(clay, sand)) +
+  stat_depth_weighted(na.rm = TRUE)
+```
+
+```{r stat-depth-weighted-spc4}
+# continuous y (horizon v.s. site)
+ggplot(loafercreek, aes(clay, slope_field)) +
+  stat_depth_weighted(na.rm = TRUE)
+```
+
+```{r stat-depth-weighted-spc5}
+# can combine with typical ggplot geoms (0-200cm mean over boxplots)
+ggplot(loafercreek, aes(clay, hillslopeprof)) +
+  geom_boxplot(na.rm = TRUE) + 
+  stat_depth_weighted(na.rm = TRUE, col = "red", pch = 17, cex = 3)
+```
+
+```{r stat-depth-weighted-spc6}
+# use site-level columns for profile-specific intervals (e.g. PSCS)
+ggplot(loafercreek, aes(clay, genhz)) +
+  stat_depth_weighted(na.rm = TRUE, from = psctopdepth, to = pscbotdepth)
 ```

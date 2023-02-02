@@ -19,5 +19,5 @@
 \code{gg} object from \code{ggplot2} package
 }
 \description{
-ggplot S3 method for SoilProfileCollection objects
+Makes ggplot aesthetics aware of SoilProfileCollection metadata.
 }

@@ -13,6 +13,8 @@ stat_depth_weighted(
   show.legend = NA,
   inherit.aes = TRUE,
   FUN = weighted.mean,
+  from = 0,
+  to = 200,
   ...
 )
 }
@@ -32,6 +34,10 @@ stat_depth_weighted(
 \item{inherit.aes}{Default: \code{TRUE}}
 
 \item{FUN}{A function. First argument is values, second argument is weights. Should accept \code{na.rm} argument. Default: \code{weighted.mean()}}
+
+\item{from}{Top depth of weighted function interval. Default: \code{0}.}
+
+\item{to}{Bottom depth of weighted function interval. Default: \code{200}.}
 
 \item{...}{additional arguments passed as parameters to \code{ggplot2::layer()}}
 }
