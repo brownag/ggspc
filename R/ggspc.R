@@ -56,7 +56,9 @@ ggplot.SoilProfileCollection <- function(data, mapping = ggplot2::aes(),
   }
 
   # pass through "fortified" data.frame to default method
-  ggplot(data = .spc_fortify(data), mapping = mapping, ..., environment = environment)
+  res <- ggplot(data = .spc_fortify(data), mapping = mapping, ..., environment = environment)
+  attr(res, 'SPC') <- data
+  res
 }
 
 #' @export
