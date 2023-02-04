@@ -5,8 +5,8 @@
 \title{\code{stat_depth_weighted()}: applies depth (thickness) weighted functions}
 \usage{
 stat_depth_weighted(
-  mapping = NULL,
   data = NULL,
+  mapping = NULL,
   geom = "point",
   position = "identity",
   na.rm = FALSE,
@@ -19,9 +19,9 @@ stat_depth_weighted(
 )
 }
 \arguments{
-\item{mapping}{Aesthetic mapping constructed via \code{ggplot2::aes()}}
-
 \item{data}{A \code{SoilProfileCollection}}
+
+\item{mapping}{Aesthetic mapping constructed via \code{ggplot2::aes()}}
 
 \item{geom}{Default: "point"}
 

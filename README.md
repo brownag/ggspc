@@ -120,8 +120,14 @@ ggplot(loafercreek, aes(clay, hillslopeprof)) +
 
 ``` r
 # use site-level columns for profile-specific intervals (e.g. PSCS)
-ggplot(loafercreek, aes(clay, genhz)) +
-  stat_depth_weighted(na.rm = TRUE, from = psctopdepth, to = pscbotdepth)
+ggplot() +
+  stat_depth_weighted(
+    loafercreek,
+    aes(clay, hillslopeprof),
+    na.rm = TRUE,
+    from = psctopdepth,
+    to = pscbotdepth
+  )
 ```
 
 <img src="man/figures/README-stat-depth-weighted-spc6-1.png" width="100%" />

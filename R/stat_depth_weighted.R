@@ -55,8 +55,8 @@ StatDepthWeighted <- ggplot2::ggproto("StatDepthWeighted", ggplot2::Stat,
 #'
 #' A `ggplot2`-style layer using the `StatDepthWeighted` statistic
 #'
-#' @param mapping Aesthetic mapping constructed via `ggplot2::aes()`
 #' @param data A `SoilProfileCollection`
+#' @param mapping Aesthetic mapping constructed via `ggplot2::aes()`
 #' @param geom Default: "point"
 #' @param position Default: `"identity"`
 #' @param na.rm Default: `FALSE`
@@ -71,8 +71,8 @@ StatDepthWeighted <- ggplot2::ggproto("StatDepthWeighted", ggplot2::Stat,
 #' @importFrom ggplot2 layer ggproto
 #' @importFrom stats weighted.mean
 #' @export
-stat_depth_weighted <- function(mapping = NULL,
-                                data = NULL,
+stat_depth_weighted <- function(data = NULL,
+                                mapping = NULL,
                                 geom = "point",
                                 position = "identity",
                                 na.rm = FALSE,
