@@ -83,9 +83,12 @@ stat_depth_weighted <- function(data = NULL,
                                 ...) {
 
   # TODO: consider options for geom, position
-
-  # access SPC from ggspc plotting environment to pass as parameter
-  spc <- get('SPC', envir = ggspc.env)
+  if (is.null(data)) {
+    spc <- get('SPC', envir = ggspc.env)
+    # access SPC from ggspc plotting environment to pass as parameter
+  } else {
+    spc <- data
+  }
 
   from <- substitute(from)
   to <- substitute(to)

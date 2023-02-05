@@ -1,7 +1,7 @@
 Package: ggspc
 Type: Package
 Title: Custom 'ggplot2' 'Stat', 'Geom', and 'theme' definitions for 'aqp' 'SoilProfileCollection' objects
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person(given="Andrew", family="Brown", email="andrew.g.brown@usda.gov", role = c("aut", "cre"))
 Maintainer: Andrew Brown <andrew.g.brown@usda.gov>
 Description: The goal of 'ggspc' is to provide custom 'Stat', 'Geom', and 'theme' definitions to enhance compatibility of 'SoilProfileCollection' objects with 'ggplot2'.

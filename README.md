@@ -131,3 +131,58 @@ ggplot() +
 ```
 
 <img src="man/figures/README-stat-depth-weighted-spc6-1.png" width="100%" />
+
+## Problem
+
+Currently the stat\_\* function extracts metadata after the `fortify()`
+method is called by accessing a “last SoilProfileCollection” cached in a
+special environment `ggspc.env` exported by the package.
+
+This causes problems for the times when the data are defined in the
+`ggplot()` call, such as the following unexpected behavior. This follows
+from the hacky-ness of the aforementioned caching side
+effect/dependency. This can be “fixed” with an explicit reference to the
+dataset (i.e. `x + stat_depth_weighted(loafercreek)`).
+
+Perhaps there is a better, more canonical ggplot2 way to implement this
+I have still not figured out. As an alternative to overwriting a last
+SPC object in a shared package environment, I return the SPC as an
+attribute of the `ggplot()` result, but I don’t know that it is possible
+to expose that attribute to the `stat_*` functions or `ggproto` classes
+by any standard method.
+
+``` r
+data(loafercreek, package = "soilDB")
+data(gopheridge, package = "soilDB")
+
+x <- ggplot(loafercreek, aes(clay, hillslopeprof))
+x <- ggplot(gopheridge, aes(clay, hillslopeprof))
+
+x + geom_boxplot() # works
+#> Warning: Removed 80 rows containing non-finite values (`stat_boxplot()`).
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+``` r
+y + geom_boxplot() # works
+#> Error in eval(expr, envir, enclos): object 'y' not found
+
+x + stat_depth_weighted() # error
+```
+
+<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
+
+``` r
+x + stat_depth_weighted(loafercreek) # works
+```
+
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
+
+``` r
+y + stat_depth_weighted() # error
+#> Error in eval(expr, envir, enclos): object 'y' not found
+x + stat_depth_weighted(gopheridge) # works
+```
+
+<img src="man/figures/README-unnamed-chunk-2-4.png" width="100%" />
