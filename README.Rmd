@@ -17,6 +17,10 @@ knitr::opts_chunk$set(
 # {ggspc}
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/brownag/ggspc/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/brownag/ggspc/actions/workflows/R-CMD-check.yml)
+[![ggspc HTML Manual](http://img.shields.io/badge/docs-HTML-informational)](https://humus.rocks/ggspc/)
+[![CRAN status](https://www.r-pkg.org/badges/version/ggspc)](https://CRAN.R-project.org/package=ggspc)
+[![Codecov test coverage](https://codecov.io/gh/brownag/ggspc/branch/main/graph/badge.svg)](https://app.codecov.io/gh/brownag/ggspc?branch=main)
 <!-- badges: end -->
 
 The goal of {ggspc} is to provide custom 'Stat', 'Geom' and 'theme' definitions for 'SoilProfileCollection' object compatibility with 'ggplot2'.
