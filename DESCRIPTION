@@ -21,4 +21,4 @@ Suggests:
     soilDB (>= 2.7.3),
     testthat (>= 3.1.2)
 Remotes: ncss-tech/aqp
-Config/testthat/edition: 3
+URL: https://humus.rocks/ggspc/, https://github.com/brownag/ggspc
