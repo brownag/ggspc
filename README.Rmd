@@ -44,7 +44,7 @@ library(ggspc)
 library(ggplot2)
 
 data(loafercreek, package = "soilDB")
-GHL(loafercreek) <- "genhz"
+GHL(loafercreek) <- "dspcomplayerid"
 ```
 
 ### Basics
@@ -65,7 +65,7 @@ ggplot(loafercreek, aes(hillslopeprof, clay)) +
 
 ```{r basic-spc-ggplot3}
 # horizon v.s. horizon level
-ggplot(loafercreek, aes(clay, genhz)) +
+ggplot(loafercreek, aes(clay, dspcomplayerid)) +
   geom_boxplot(na.rm = TRUE)
 ```
 
